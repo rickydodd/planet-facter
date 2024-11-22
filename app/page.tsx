@@ -5,8 +5,8 @@ import Header from '../components/Header'
 import Planet from '../components/Planet'
 
 const initialState = {
-  data: {},
   position: 0,
+  data: [],
 }
 
 const reducer = (state, action) => {
