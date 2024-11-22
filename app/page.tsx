@@ -5,8 +5,8 @@ import Header from '../components/Header'
 import Planet from '../components/Planet'
 
 const initialState = {
-  position: 0,
   data: [],
+  position: null,
 }
 
 const reducer = (state, action) => {
@@ -15,6 +15,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         data: action.data,
+        position: action.data.length > 0 ? 0 : null,
       }
     case 'set_position':
       return {
