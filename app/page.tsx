@@ -6,9 +6,7 @@ import Planet from '../components/Planet'
 
 const initialState = {
   data: {},
-  planetData: {},
   position: 0,
-  planetNames: [],
 }
 
 const reducer = (state, action) => {
@@ -17,10 +15,6 @@ const reducer = (state, action) => {
       return {
         ...state,
         data: action.data,
-        planetNames: action.data.reduce(
-          (planetNames, planet) => [...planetNames, planet.name],
-          [],
-        ),
       }
     case 'set_position':
       return {
