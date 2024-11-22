@@ -22,8 +22,15 @@ const reducer = (state, action) => {
           [],
         ),
       }
+    case 'set_position':
+      return {
+        ...state,
+        position: action.position,
+      }
     default:
-      throw new Error(`Unexpected type passed to dispatch. Received: ${type}`)
+      throw new Error(
+        `Unexpected type passed to dispatch. Received: ${action.type}`,
+      )
   }
 }
 
