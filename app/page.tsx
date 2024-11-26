@@ -169,6 +169,24 @@ export default function Home() {
           </p>
         </TabContent>
       </div>
+      <div className="planet-characteristics">
+        <div>
+          <p>Rotation time</p>
+          <p>{state.data[state.position].rotation}</p>
+        </div>
+        <div>
+          <p>Revolution time</p>
+          <p>{state.data[state.position].revolution}</p>
+        </div>
+        <div>
+          <p>Radius</p>
+          <p>{state.data[state.position].radius}</p>
+        </div>
+        <div>
+          <p>Average temp.</p>
+          <p>{state.data[state.position].temperature}</p>
+        </div>
+      </div>
     </>
   );
 }
