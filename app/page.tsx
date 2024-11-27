@@ -24,6 +24,12 @@ const reducer = (state, action) => {
           `'position' variable out of bounds. Expected: '0' to '${state.data.length - 1}' inclusive, got: '${action.position}'`,
         );
       }
+    case "set_position":
+      if (action.position < 0 || action.position >= state.data.length) {
+        throw new Error(
+          `'position' variable out of bounds. Expected: '0' to '${state.data.length - 1}' inclusive, got: '${action.position}'`,
+        );
+      }
 
       return {
         ...state,
