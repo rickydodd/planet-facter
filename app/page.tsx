@@ -8,6 +8,7 @@ const initialState = {
   data: [],
   position: null,
   activeTab: "overview",
+  loading: true,
 };
 
 const reducer = (state, action) => {
@@ -41,6 +42,11 @@ const reducer = (state, action) => {
         ...state,
         activeTab: action.activeTab,
       };
+    case "set_loaded":
+      return {
+        ...state,
+        loading: false,
+      };
     default:
       throw new Error(
         `Unexpected type passed to dispatch. Received: ${action.type}`,
@@ -56,6 +62,7 @@ export default function Home() {
       .then((res) => res.json())
       .then((data) => {
         dispatch({ type: "set_data", data });
+        dispatch({ type: "set_loaded" });
       });
   }, []);
 
@@ -67,7 +74,7 @@ export default function Home() {
     dispatch({ type: "set_active_tab", activeTab: e.target.value });
   };
 
-  return (
+  return state.loading ? null : (
     <>
       <header>
         <h1>Planet Facter</h1>
@@ -108,70 +115,58 @@ export default function Home() {
           Surface
         </TabButton>
         <TabContent activeTab={state.activeTab} value="overview">
-          {state.position === null ? null : (
-            <>
-              <Image
-                src={state.data[state.position].images.planet}
-                width={582}
-                height={582}
-                alt={`The planet ${state.data[state.position].name}`}
-              />
-              <h2>{state.data[state.position].name}</h2>
-              <p>{state.data[state.position].overview.content}</p>
-              <p>
-                Source:{" "}
-                <a href={`${state.data[state.position].overview.source}`}>
-                  Wikipedia
-                </a>
-              </p>
-            </>
-          )}
+          <Image
+            src={state.data[state.position].images.planet}
+            width={582}
+            height={582}
+            alt={`The planet ${state.data[state.position].name}`}
+          />
+          <h2>{state.data[state.position].name}</h2>
+          <p>{state.data[state.position].overview.content}</p>
+          <p>
+            Source:{" "}
+            <a href={`${state.data[state.position].overview.source}`}>
+              Wikipedia
+            </a>
+          </p>
         </TabContent>
         <TabContent activeTab={state.activeTab} value="structure">
-          {state.position === null ? null : (
-            <>
-              <Image
-                src={state.data[state.position].images.internal}
-                width={582}
-                height={582}
-                alt={`The internal structure of the planet ${state.data[state.position].name}`}
-              />
-              <h2>{state.data[state.position].name}</h2>
-              <p>{state.data[state.position].structure.content}</p>
-              <p>
-                Source:{" "}
-                <a href={`${state.data[state.position].structure.source}`}>
-                  Wikipedia
-                </a>
-              </p>
-            </>
-          )}
+          <Image
+            src={state.data[state.position].images.internal}
+            width={582}
+            height={582}
+            alt={`The internal structure of the planet ${state.data[state.position].name}`}
+          />
+          <h2>{state.data[state.position].name}</h2>
+          <p>{state.data[state.position].structure.content}</p>
+          <p>
+            Source:{" "}
+            <a href={`${state.data[state.position].structure.source}`}>
+              Wikipedia
+            </a>
+          </p>
         </TabContent>
         <TabContent activeTab={state.activeTab} value="geology">
-          {state.position === null ? null : (
-            <>
-              <Image
-                src={state.data[state.position].images.planet}
-                width={582}
-                height={582}
-                alt={`The planet ${state.data[state.position].name}`}
-              />
-              <Image
-                src={state.data[state.position].images.geology}
-                width={326}
-                height={398}
-                alt={`The geology of the planet ${state.data[state.position].name}`}
-              />
-              <h2>{state.data[state.position].name}</h2>
-              <p>{state.data[state.position].geology.content}</p>
-              <p>
-                Source:{" "}
-                <a href={`${state.data[state.position].geology.source}`}>
-                  Wikipedia
-                </a>
-              </p>
-            </>
-          )}
+          <Image
+            src={state.data[state.position].images.planet}
+            width={582}
+            height={582}
+            alt={`The planet ${state.data[state.position].name}`}
+          />
+          <Image
+            src={state.data[state.position].images.geology}
+            width={326}
+            height={398}
+            alt={`The geology of the planet ${state.data[state.position].name}`}
+          />
+          <h2>{state.data[state.position].name}</h2>
+          <p>{state.data[state.position].geology.content}</p>
+          <p>
+            Source:{" "}
+            <a href={`${state.data[state.position].geology.source}`}>
+              Wikipedia
+            </a>
+          </p>
         </TabContent>
       </div>
     </>
