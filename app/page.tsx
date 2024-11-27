@@ -114,7 +114,11 @@ export default function Home() {
         >
           Surface
         </TabButton>
-        <TabContent activeTab={state.activeTab} value="overview">
+        <TabContent
+          activeTab={state.activeTab}
+          className="px-6"
+          value="overview"
+        >
           <Image
             src={state.data[state.position].images.planet}
             width={582}
@@ -130,7 +134,11 @@ export default function Home() {
             </a>
           </p>
         </TabContent>
-        <TabContent activeTab={state.activeTab} value="structure">
+        <TabContent
+          activeTab={state.activeTab}
+          className="px-6"
+          value="structure"
+        >
           <Image
             src={state.data[state.position].images.internal}
             width={582}
@@ -146,7 +154,11 @@ export default function Home() {
             </a>
           </p>
         </TabContent>
-        <TabContent activeTab={state.activeTab} value="geology">
+        <TabContent
+          activeTab={state.activeTab}
+          className="px-6"
+          value="geology"
+        >
           <Image
             src={state.data[state.position].images.planet}
             width={582}
