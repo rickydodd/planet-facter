@@ -12,7 +12,7 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "set_initial":
+    case "set_data":
       return {
         ...state,
         data: action.data,
@@ -55,7 +55,7 @@ export default function Home() {
     fetch(process.cwd() + "data.json")
       .then((res) => res.json())
       .then((data) => {
-        dispatch({ type: "set_initial", data });
+        dispatch({ type: "set_data", data });
       });
   }, []);
 
