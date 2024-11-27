@@ -8,9 +8,16 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        antonio: ["var(--font-antonio)"],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        gray: {
+          500: "#838391",
+          800: "#38384F",
+        },
       },
     },
   },
