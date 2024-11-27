@@ -181,22 +181,32 @@ export default function Home() {
           </p>
         </TabContent>
       </div>
-      <div className="planet-characteristics">
-        <div>
-          <p>Rotation time</p>
-          <p>{state.data[state.position].rotation}</p>
+      <div className="flex flex-col gap-2 px-6 uppercase md:flex-row md:gap-3 md:justify-between md:px-10 xl:gap-8 xl:px-40">
+        <div className="border border-gray-800 flex items-center justify-between p-6 md:flex-1 md:flex-col md:gap-y-1.5 md:items-start xl:gap-y-1">
+          <p className="font-bold h-min text-gray-500 text-xs">Rotation time</p>
+          <p className="font-antonio font-medium text-xl md:text-2xl">
+            {state.data[state.position].rotation}
+          </p>
         </div>
-        <div>
-          <p>Revolution time</p>
-          <p>{state.data[state.position].revolution}</p>
+        <div className="border border-gray-800 flex items-center justify-between p-6 md:flex-1 md:flex-col md:gap-y-1.5 md:items-start xl:gap-y-1">
+          <p className="font-bold h-min text-gray-500 text-xs">
+            Revolution time
+          </p>
+          <p className="font-antonio font-medium text-xl md:text-2xl">
+            {state.data[state.position].revolution}
+          </p>
         </div>
-        <div>
-          <p>Radius</p>
-          <p>{state.data[state.position].radius}</p>
+        <div className="border border-gray-800 flex items-center justify-between p-6 md:flex-1 md:flex-col md:gap-y-1.5 md:items-start xl:gap-y-1">
+          <p className="font-bold h-min text-gray-500 text-xs">Radius</p>
+          <p className="font-antonio font-medium text-xl md:text-2xl">
+            {state.data[state.position].radius}
+          </p>
         </div>
-        <div>
-          <p>Average temp.</p>
-          <p>{state.data[state.position].temperature}</p>
+        <div className="border border-gray-800 flex items-center justify-between p-6 md:flex-1 md:flex-col md:gap-y-1.5 md:items-start xl:gap-y-1">
+          <p className="font-bold h-min text-gray-500 text-xs">Average temp.</p>
+          <p className="font-antonio font-medium text-xl md:text-2xl">
+            {state.data[state.position].temperature}
+          </p>
         </div>
       </div>
     </>
