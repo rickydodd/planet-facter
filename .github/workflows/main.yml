@@ -1,0 +1,25 @@
+name: Continuous Integration
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches: -main
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Prettify
+        uses: creyD/prettier_action@v4.3
+        with:
+          prettier_options: --write **/*.{js,jsx,ts,tsx,css,md}
+          only_changed: true
+          github_token: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
